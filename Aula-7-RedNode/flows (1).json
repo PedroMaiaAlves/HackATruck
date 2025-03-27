@@ -1,0 +1,129 @@
+[
+    {
+        "id": "3c604af93008f78c",
+        "type": "tab",
+        "label": "Flow 1",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "c0ec4f0481f7b7c7",
+        "type": "cloudantplus",
+        "host": "https://f1c0dcf9-5075-4061-a1f8-2f4ca596058a-bluemix.cloudantnosqldb.appdomain.cloud",
+        "name": "CredencialPedro",
+        "useapikey": true
+    },
+    {
+        "id": "94c679692edaddfa",
+        "type": "cloudantplus out",
+        "z": "3c604af93008f78c",
+        "name": "",
+        "cloudant": "c0ec4f0481f7b7c7",
+        "database": "pedrobd",
+        "service": "_ext_",
+        "payonly": true,
+        "operation": "insert",
+        "x": 440,
+        "y": 120,
+        "wires": [
+            [
+                "04d2fb606e5bdceb"
+            ]
+        ]
+    },
+    {
+        "id": "4279aff61086d978",
+        "type": "http in",
+        "z": "3c604af93008f78c",
+        "name": "",
+        "url": "/post",
+        "method": "post",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 90,
+        "y": 120,
+        "wires": [
+            [
+                "c76f3f68fc2cc84e"
+            ]
+        ]
+    },
+    {
+        "id": "04d2fb606e5bdceb",
+        "type": "http response",
+        "z": "3c604af93008f78c",
+        "name": "",
+        "statusCode": "",
+        "headers": {},
+        "x": 570,
+        "y": 120,
+        "wires": []
+    },
+    {
+        "id": "517fcaa68e1fa5ff",
+        "type": "http in",
+        "z": "3c604af93008f78c",
+        "name": "",
+        "url": "get",
+        "method": "get",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 100,
+        "y": 200,
+        "wires": [
+            [
+                "979db23d6edc94f2"
+            ]
+        ]
+    },
+    {
+        "id": "4b65761ac12afb3f",
+        "type": "http response",
+        "z": "3c604af93008f78c",
+        "name": "",
+        "statusCode": "",
+        "headers": {},
+        "x": 390,
+        "y": 200,
+        "wires": []
+    },
+    {
+        "id": "979db23d6edc94f2",
+        "type": "cloudantplus in",
+        "z": "3c604af93008f78c",
+        "name": "",
+        "cloudant": "c0ec4f0481f7b7c7",
+        "database": "pedrobd",
+        "service": "_ext_",
+        "search": "_all_",
+        "design": "",
+        "index": "",
+        "x": 260,
+        "y": 200,
+        "wires": [
+            [
+                "4b65761ac12afb3f"
+            ]
+        ]
+    },
+    {
+        "id": "c76f3f68fc2cc84e",
+        "type": "split",
+        "z": "3c604af93008f78c",
+        "name": "",
+        "splt": "\\n",
+        "spltType": "str",
+        "arraySplt": 1,
+        "arraySpltType": "len",
+        "stream": false,
+        "addname": "",
+        "x": 250,
+        "y": 120,
+        "wires": [
+            [
+                "94c679692edaddfa"
+            ]
+        ]
+    }
+]
